@@ -1,0 +1,1014 @@
+/* 全新的玫瑰花生日网页样式 */
+
+/* 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 梦幻少女色彩变量 */
+    --rose-red: #ff1744;
+    --rose-pink: #ff6b9d;
+    --rose-light: #ffc1cc;
+    --gold: #ffd700;
+    --dreamy-purple: #8b5cf6;
+    --soft-lavender: #c084fc;
+    --warm-peach: #fbbf24;
+    --gentle-mint: #34d399;
+    --star-white: #ffffff;
+    --glow-pink: #ff69b4;
+    --gradient-start: #667eea;
+    --gradient-mid: #764ba2;
+    --gradient-end: #f093fb;
+
+    /* 动画时长 */
+    --bloom-duration: 3s;
+    --float-duration: 6s;
+    --twinkle-duration: 2s;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg,
+            #1e1b4b 0%,
+            #312e81 25%,
+            #6366f1 50%,
+            #8b5cf6 75%,
+            #c084fc 100%);
+    background-size: 400% 400%;
+    animation: dreamyGradientFlow 20s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--star-white);
+}
+
+/* 星空背景 */
+.starry-night {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="%23fbbf24" opacity="0.8"/><circle cx="80" cy="30" r="0.5" fill="%23ffffff" opacity="0.6"/><circle cx="30" cy="60" r="1.5" fill="%23c084fc" opacity="0.9"/><circle cx="70" cy="80" r="0.8" fill="%23ffffff" opacity="0.7"/><circle cx="10" cy="90" r="0.3" fill="%2334d399" opacity="0.5"/><circle cx="90" cy="10" r="1.2" fill="%23ff6b9d" opacity="0.8"/><circle cx="50" cy="40" r="0.6" fill="%23ffffff" opacity="0.6"/><circle cx="60" cy="70" r="0.9" fill="%238b5cf6" opacity="0.7"/></svg>') repeat;
+    animation: dreamyTwinkle var(--twinkle-duration) ease-in-out infinite alternate;
+}
+
+.twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="gold" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/></circle><circle cx="75" cy="75" r="1.5" fill="pink" opacity="0.6"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/></circle><circle cx="50" cy="10" r="1" fill="lightblue" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/></circle></svg>') repeat;
+    animation: sparkle 4s linear infinite;
+}
+
+/* 飘落花瓣背景 */
+.falling-petals-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 主容器 */
+.main-container {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 标题样式 */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 2s ease-out both;
+    opacity: 0;
+}
+
+.main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    font-weight: 400;
+    text-shadow: 
+        0 0 10px var(--glow-pink),
+        0 0 20px var(--glow-pink),
+        0 0 30px var(--glow-pink);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.title-line {
+    display: block;
+    background: linear-gradient(45deg, var(--rose-red), var(--gold), var(--rose-pink), var(--rose-light));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientFlow 4s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 1rem;
+    color: var(--rose-light);
+    letter-spacing: 3px;
+    opacity: 0.9;
+}
+
+/* 玫瑰花文字场景 */
+.rose-scene {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    min-height: 400px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* 玫瑰花文字容器 */
+.rose-text-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+/* 单个玫瑰花 */
+.mini-rose {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: roseAppear 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.mini-rose:hover {
+    transform: scale(2);
+    z-index: 100;
+}
+
+/* 玫瑰花花朵 */
+.rose-flower {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, #ff6b9d, #ff1744, #d50000);
+    border-radius: 50%;
+    position: relative;
+    box-shadow:
+        0 0 4px rgba(255, 23, 68, 0.6),
+        inset 0 0 2px rgba(255, 255, 255, 0.3);
+    animation: roseGlow 3s ease-in-out infinite alternate;
+}
+
+.rose-flower::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.rose-flower::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(255, 23, 68, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: roseHalo 2s ease-in-out infinite;
+}
+
+/* 玫瑰花茎（小点） */
+.rose-stem-mini {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 1px;
+    height: 4px;
+    background: linear-gradient(to bottom, #4caf50, #2e7d32);
+    transform: translateX(-50%);
+}
+
+/* 文字路径定义 */
+.text-path {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* 生日快乐四个字的布局 */
+.char-生 { left: 5%; top: 20%; }
+.char-日 { left: 30%; top: 20%; }
+.char-快 { left: 55%; top: 20%; }
+.char-乐 { left: 80%; top: 20%; }
+
+/* 特殊效果玫瑰花 */
+.special-rose {
+    animation: specialRoseGlow 2s ease-in-out infinite alternate;
+}
+
+.special-rose .rose-flower {
+    background: radial-gradient(circle at 30% 30%, #ffd700, #ff6b9d, #ff1744);
+    box-shadow:
+        0 0 8px rgba(255, 215, 0, 0.8),
+        0 0 16px rgba(255, 23, 68, 0.6);
+}
+
+/* 玫瑰花计数器 */
+.rose-counter {
+    position: absolute;
+    top: -40px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--rose-light);
+    border: 1px solid rgba(255, 107, 157, 0.3);
+}
+
+/* 消息容器 */
+.message-container {
+    margin: 3rem 0;
+    animation: fadeInUp 2s ease-out 1s both;
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 107, 157, 0.3);
+    border-radius: 25px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 
+        0 8px 32px rgba(255, 23, 68, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--rose-red), var(--gold), var(--rose-pink), var(--rose-light));
+    border-radius: 25px;
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+}
+
+.message-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--star-white);
+    margin-bottom: 1rem;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.deco-heart, .deco-star {
+    animation: decorationFloat 2s ease-in-out infinite;
+}
+
+.deco-heart:nth-child(2) { animation-delay: 0.5s; }
+.deco-star { animation-delay: 1s; }
+
+/* 中央惊喜按钮容器 */
+.center-surprise-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    animation: fadeInUp 2s ease-out 0.5s both;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 中央惊喜按钮 */
+.center-surprise-btn {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        var(--rose-pink),
+        var(--dreamy-purple),
+        var(--soft-lavender),
+        var(--warm-peach));
+    background-size: 400% 400%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow:
+        0 0 40px rgba(255, 107, 157, 0.7),
+        0 0 80px rgba(139, 92, 246, 0.4),
+        0 0 120px rgba(192, 132, 252, 0.2);
+    animation: gradientShift 4s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
+    overflow: hidden;
+}
+
+.center-surprise-btn:hover {
+    transform: scale(1.1);
+    box-shadow:
+        0 0 40px rgba(255, 107, 157, 0.8),
+        0 0 80px rgba(255, 107, 157, 0.6),
+        0 0 120px rgba(255, 107, 157, 0.4);
+}
+
+.center-surprise-btn:active {
+    transform: scale(0.95);
+}
+
+.surprise-btn-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.surprise-btn-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.surprise-btn-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.surprise-btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(255, 255, 255, 0.3) 90deg,
+        transparent 180deg,
+        rgba(255, 255, 255, 0.3) 270deg,
+        transparent 360deg
+    );
+    animation: rotate 4s linear infinite;
+    z-index: 1;
+}
+
+/* 特效层 */
+.effects-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* 动画定义 */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px var(--glow-pink),
+            0 0 20px var(--glow-pink),
+            0 0 30px var(--glow-pink);
+    }
+    50% {
+        text-shadow: 
+            0 0 20px var(--glow-pink),
+            0 0 30px var(--glow-pink),
+            0 0 40px var(--glow-pink),
+            0 0 50px var(--rose-red);
+    }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+@keyframes sparkle {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
+}
+
+@keyframes roseFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateY(10deg);
+    }
+}
+
+@keyframes roseBloom {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes decorationFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* 加载状态 */
+.not-loaded * {
+    animation-play-state: paused !important;
+}
+
+/* 高级玫瑰花动画 */
+@keyframes advancedRoseAppear {
+    0% {
+        opacity: 0;
+        transform: translateZ(var(--z, 0px)) rotateZ(var(--rotation, 0deg)) scale(0) rotateY(180deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateZ(var(--z, 0px)) rotateZ(var(--rotation, 0deg)) scale(1.2) rotateY(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(var(--z, 0px)) rotateZ(var(--rotation, 0deg)) scale(1) rotateY(0deg);
+    }
+}
+
+@keyframes scene3DFloat {
+    0%, 100% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(2deg) rotateY(5deg);
+    }
+    50% {
+        transform: rotateX(0deg) rotateY(10deg);
+    }
+    75% {
+        transform: rotateX(-2deg) rotateY(5deg);
+    }
+}
+
+@keyframes spotlightRotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes spotlightPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes colorLightFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes stardustTwinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes stardustFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-20px); }
+}
+
+@keyframes magicCircleRotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes runeGlow {
+    0%, 100% { opacity: 0.6; color: rgba(255, 215, 0, 0.6); }
+    50% { opacity: 1; color: rgba(255, 215, 0, 1); }
+}
+
+@keyframes advancedHeartFloat {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-50vh) scale(1.5) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+}
+
+@keyframes advancedPetalFall {
+    0% {
+        transform: translateY(-20px) rotate(0deg) scale(1);
+        opacity: 0.7;
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(25vh) rotate(90deg) scale(1.1);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) scale(1.2);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes lightParticleAnimation {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes mouseTrailFade {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+@keyframes petalLayerRotate {
+    0% { transform: translate(-50%, -50%) rotateZ(0deg); }
+    100% { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+
+@keyframes petalGlow {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    50% { filter: brightness(1.3) saturate(1.5); }
+}
+
+@keyframes centerPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes auraGlow {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes lightPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes ambientGlow {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes explosionParticle {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes heartExplosion {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+@keyframes messageFloat {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+}
+
+@keyframes hoverAuraGlow {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes grandMessageAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(180deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes grandCelebrationDance {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.3) rotate(90deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+    75% { transform: scale(1.2) rotate(270deg); }
+}
+
+@keyframes celebrationParticleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20vh) scale(1) rotate(180deg);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-80vh) scale(1.2) rotate(540deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0) rotate(720deg);
+    }
+}
+
+@keyframes fireworkSpark {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1) rotate(36deg);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-200px) scale(1.5) rotate(324deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-220px) scale(2) rotate(360deg);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 30px rgba(255, 107, 157, 0.6),
+            0 0 60px rgba(255, 107, 157, 0.4),
+            0 0 90px rgba(255, 107, 157, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 0 40px rgba(255, 107, 157, 0.8),
+            0 0 80px rgba(255, 107, 157, 0.6),
+            0 0 120px rgba(255, 107, 157, 0.4);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes dreamyGradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 50% 0%; }
+}
+
+@keyframes dreamyTwinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes roseSparkle {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
+        transform: scale(1.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 23, 68, 1), 0 0 30px rgba(255, 107, 157, 0.6);
+        transform: scale(1.8);
+    }
+}
+
+@keyframes completionBounce {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-50px) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1.2);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px) scale(1);
+    }
+    60% {
+        transform: translateX(-50%) translateY(0) scale(1.1);
+    }
+    80% {
+        transform: translateX(-50%) translateY(-5px) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes fireworkExplode {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow:
+            0 0 0 0 rgba(255, 255, 255, 1),
+            0 0 0 0 rgba(255, 23, 68, 1),
+            0 0 0 0 rgba(255, 107, 157, 1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(20);
+        box-shadow:
+            0 0 50px 20px rgba(255, 255, 255, 0),
+            0 0 100px 40px rgba(255, 23, 68, 0),
+            0 0 150px 60px rgba(255, 107, 157, 0);
+    }
+}
+
+/* 生日玫瑰花样式 */
+.birthday-rose {
+    animation: roseGlow 3s ease-in-out infinite;
+}
+
+@keyframes roseGlow {
+    0%, 100% {
+        filter: brightness(1) saturate(1);
+    }
+    50% {
+        filter: brightness(1.3) saturate(1.5);
+    }
+}
+
+/* 玫瑰花场景显示动画 */
+.rose-scene {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 完成特效样式 */
+.completion-effect {
+    font-family: 'Noto Sans SC', sans-serif;
+    text-align: center;
+    user-select: none;
+}
+
+@keyframes goldenAuraGlow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
+
+@keyframes diamondAuraRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes bloomExpand {
+    0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(4);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .rose-text-container {
+        height: 250px;
+    }
+
+    .control-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control-btn {
+        width: 200px;
+        justify-content: center;
+    }
+
+    .message-card {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+
+    .message-text {
+        font-size: 1.2rem;
+    }
+
+    .advanced-3d-scene {
+        animation: none; /* 移动设备上禁用3D动画以提高性能 */
+    }
+}

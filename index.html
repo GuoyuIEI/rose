@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 生日快乐，我的爱人 💖</title>
+    <link rel="stylesheet" href="css/new-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="not-loaded">
+    <!-- 星空背景 -->
+    <div class="starry-night">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <!-- 飘落的花瓣背景 -->
+    <div class="falling-petals-bg">
+        <!-- 动态生成的花瓣 -->
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 中央惊喜按钮 -->
+        <div class="center-surprise-container">
+            <button class="center-surprise-btn" id="center-surprise-btn">
+                <div class="surprise-btn-content">
+                    <span class="surprise-btn-icon">🎁</span>
+                    <span class="surprise-btn-text">点击惊喜</span>
+                    <div class="surprise-btn-glow"></div>
+                </div>
+            </button>
+        </div>
+
+        <!-- 玫瑰花场景 -->
+        <div class="rose-scene" id="rose-scene" style="display: none;">
+            <!-- 玫瑰花文字容器 -->
+            <div class="rose-text-container" id="rose-text-container">
+                <!-- 726朵玫瑰花将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 特效层 -->
+    <div class="effects-layer">
+        <!-- 爱心粒子 -->
+        <div class="heart-particles"></div>
+        <!-- 光点效果 -->
+        <div class="light-particles"></div>
+        <!-- 烟花效果 -->
+        <div class="fireworks"></div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="background-music" loop>
+        <source src="audio/birthday-music.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <!-- JavaScript -->
+    <script src="js/birthday-text-roses.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+# GitHub Pages 配置文件
+
+# 网站基本信息
+title: "💖 生日快乐，我的爱人 💖"
+description: "一个特殊的玫瑰花特效网页，献给我最爱的人"
+author: "Your Name"
+
+# GitHub Pages 设置
+baseurl: "" # 如果部署在子目录，请设置相应路径
+url: "" # 你的GitHub Pages URL，例如：https://username.github.io
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# 插件
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# 排除文件
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - .gitignore
+
+# 包含文件
+include:
+  - _pages
+
+# 默认设置
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# SEO 设置
+lang: zh-CN
+timezone: Asia/Shanghai
+
+# 社交媒体（可选）
+# github_username: your-username
+# twitter_username: your-username
+
+# Google Analytics（可选）
+# google_analytics: UA-XXXXXXXX-X
+
+# 网站图标
+# favicon: "/favicon.ico"

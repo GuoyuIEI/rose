@@ -1,0 +1,239 @@
+/* 粒子效果样式 */
+
+/* 自定义粒子样式覆盖 */
+#particles-js canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 额外的装饰粒子 */
+.decorative-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 爱心粒子 */
+.heart-particle {
+    position: absolute;
+    font-size: 20px;
+    color: #ff6b6b;
+    animation: heartFloat 8s linear infinite;
+    opacity: 0.8;
+}
+
+.heart-particle:nth-child(odd) {
+    color: #ff8e8e;
+    animation-duration: 10s;
+}
+
+.heart-particle:nth-child(3n) {
+    color: #feca57;
+    animation-duration: 12s;
+}
+
+/* 星星粒子 */
+.star-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: starTwinkle 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.star-particle::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* 光点粒子 */
+.light-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #48dbfb 0%, transparent 70%);
+    border-radius: 50%;
+    animation: lightFloat 6s ease-in-out infinite;
+}
+
+/* 魔法粒子 */
+.magic-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #ff9ff3, #feca57);
+    border-radius: 50%;
+    animation: magicSparkle 4s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+}
+
+/* 粒子动画 */
+@keyframes heartFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes lightFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px) translateX(-10px);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-30px) translateX(5px);
+        opacity: 1;
+    }
+}
+
+@keyframes magicSparkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.7;
+        box-shadow: 0 0 15px rgba(255, 159, 243, 0.6);
+    }
+    25% {
+        transform: scale(1.3) rotate(90deg);
+        opacity: 1;
+        box-shadow: 0 0 25px rgba(255, 159, 243, 0.8);
+    }
+    50% {
+        transform: scale(0.8) rotate(180deg);
+        opacity: 0.9;
+        box-shadow: 0 0 20px rgba(254, 202, 87, 0.7);
+    }
+    75% {
+        transform: scale(1.1) rotate(270deg);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(255, 159, 243, 0.9);
+    }
+}
+
+/* 特殊效果 - 惊喜模式 */
+.surprise-mode .heart-particle {
+    animation-duration: 3s !important;
+    font-size: 30px !important;
+}
+
+.surprise-mode .star-particle {
+    animation-duration: 1s !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1) !important;
+}
+
+.surprise-mode .magic-particle {
+    animation-duration: 2s !important;
+    box-shadow: 0 0 30px rgba(255, 159, 243, 1) !important;
+}
+
+/* 烟花效果 */
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: fireworkExplode 2s ease-out forwards;
+}
+
+.firework-red {
+    background: #ff6b6b;
+    box-shadow: 0 0 10px #ff6b6b;
+}
+
+.firework-gold {
+    background: #feca57;
+    box-shadow: 0 0 10px #feca57;
+}
+
+.firework-blue {
+    background: #48dbfb;
+    box-shadow: 0 0 10px #48dbfb;
+}
+
+.firework-pink {
+    background: #ff9ff3;
+    box-shadow: 0 0 10px #ff9ff3;
+}
+
+@keyframes fireworkExplode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(3);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .heart-particle {
+        font-size: 16px;
+    }
+    
+    .star-particle {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .light-particle {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .magic-particle {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .surprise-mode .heart-particle {
+        font-size: 24px !important;
+    }
+}

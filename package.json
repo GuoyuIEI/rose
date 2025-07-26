@@ -1,0 +1,39 @@
+{
+  "name": "birthday-rose-website",
+  "version": "1.0.0",
+  "description": "一个特殊的玫瑰花特效网页，献给我最爱的人",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "dev": "live-server --port=8000",
+    "build": "echo 'This is a static website, no build process needed'",
+    "deploy": "echo 'Please follow the GitHub Pages deployment guide in README.md'"
+  },
+  "keywords": [
+    "birthday",
+    "rose",
+    "animation",
+    "3d",
+    "particles",
+    "romantic",
+    "gift",
+    "website"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/birthday-rose-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/birthday-rose-website/issues"
+  },
+  "homepage": "https://your-username.github.io/birthday-rose-website",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
