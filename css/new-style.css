@@ -102,6 +102,21 @@ body {
     padding: 20px;
 }
 
+/* 移动端主容器适配 */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 15px;
+        min-height: 100vh;
+        min-height: 100dvh; /* 动态视口高度，避免移动端地址栏影响 */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 10px;
+    }
+}
+
 /* 标题样式 */
 .header {
     text-align: center;
@@ -151,6 +166,22 @@ body {
     min-height: 400px;
     width: 100%;
     max-width: 1200px;
+}
+
+/* 移动端玫瑰花场景适配 */
+@media (max-width: 768px) {
+    .rose-scene {
+        margin: 1rem 0;
+        min-height: 300px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .rose-scene {
+        margin: 0.5rem 0;
+        min-height: 250px;
+    }
 }
 
 /* 玫瑰花文字容器 */
@@ -360,6 +391,29 @@ body {
     overflow: hidden;
 }
 
+/* 移动端按钮适配 */
+@media (max-width: 768px) {
+    .center-surprise-btn {
+        width: 140px;
+        height: 140px;
+        box-shadow:
+            0 0 30px rgba(255, 107, 157, 0.7),
+            0 0 60px rgba(139, 92, 246, 0.4),
+            0 0 90px rgba(192, 132, 252, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .center-surprise-btn {
+        width: 120px;
+        height: 120px;
+        box-shadow:
+            0 0 20px rgba(255, 107, 157, 0.7),
+            0 0 40px rgba(139, 92, 246, 0.4),
+            0 0 60px rgba(192, 132, 252, 0.2);
+    }
+}
+
 .center-surprise-btn:hover {
     transform: scale(1.1);
     box-shadow:
@@ -396,6 +450,31 @@ body {
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
+}
+
+/* 移动端按钮内容适配 */
+@media (max-width: 768px) {
+    .surprise-btn-icon {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+
+    .surprise-btn-text {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .surprise-btn-icon {
+        font-size: 28px;
+        margin-bottom: 6px;
+    }
+
+    .surprise-btn-text {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
 }
 
 .surprise-btn-glow {

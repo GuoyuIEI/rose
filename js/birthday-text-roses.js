@@ -25,11 +25,33 @@ class BirthdayTextRoses {
     generateTextPositions() {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = 1600;
-        canvas.height = 600;
 
-        // 设置更大的字体
-        ctx.font = 'bold 200px "Noto Sans SC", sans-serif';
+        // 根据屏幕大小调整画布尺寸
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+
+        if (isSmallMobile) {
+            canvas.width = 800;
+            canvas.height = 300;
+        } else if (isMobile) {
+            canvas.width = 1200;
+            canvas.height = 400;
+        } else {
+            canvas.width = 1600;
+            canvas.height = 600;
+        }
+
+        // 根据屏幕大小调整字体大小
+        let fontSize;
+        if (isSmallMobile) {
+            fontSize = 100;
+        } else if (isMobile) {
+            fontSize = 150;
+        } else {
+            fontSize = 200;
+        }
+
+        ctx.font = `bold ${fontSize}px "Noto Sans SC", sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
@@ -133,27 +155,55 @@ class BirthdayTextRoses {
         const rose = document.createElement('div');
         rose.className = 'birthday-rose';
         
+        // 根据屏幕大小调整缩放因子
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+
+        let scaleFactor;
+        if (isSmallMobile) {
+            scaleFactor = 0.8;
+        } else if (isMobile) {
+            scaleFactor = 1.2;
+        } else {
+            scaleFactor = 1.8;
+        }
+
         // 计算最终位置
-        const finalX = centerX + position.x * 1.8; // 调整缩放因子，让文字更适合屏幕
-        const finalY = centerY + position.y * 1.8;
+        const finalX = centerX + position.x * scaleFactor;
+        const finalY = centerY + position.y * scaleFactor;
         
         // 随机起始位置（从屏幕边缘飞入）
         const startX = Math.random() * window.innerWidth;
         const startY = Math.random() * window.innerHeight;
-        
+
+        let roseSize, shadowSize1, shadowSize2;
+        if (isSmallMobile) {
+            roseSize = 8;
+            shadowSize1 = 10;
+            shadowSize2 = 15;
+        } else if (isMobile) {
+            roseSize = 10;
+            shadowSize1 = 12;
+            shadowSize2 = 20;
+        } else {
+            roseSize = 12;
+            shadowSize1 = 15;
+            shadowSize2 = 25;
+        }
+
         rose.style.cssText = `
             position: fixed;
             left: ${startX}px;
             top: ${startY}px;
-            width: 12px;
-            height: 12px;
+            width: ${roseSize}px;
+            height: ${roseSize}px;
             background: radial-gradient(circle, #ff1744, #c2185b, #ff6b9d);
             border-radius: 50%;
             z-index: 100;
             transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow:
-                0 0 15px rgba(255, 23, 68, 0.9),
-                0 0 25px rgba(255, 107, 157, 0.6);
+                0 0 ${shadowSize1}px rgba(255, 23, 68, 0.9),
+                0 0 ${shadowSize2}px rgba(255, 107, 157, 0.6);
             opacity: 0;
         `;
 

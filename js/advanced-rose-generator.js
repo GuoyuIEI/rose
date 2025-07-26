@@ -24,7 +24,7 @@ class AdvancedRoseGenerator {
             glowIntensity: { min: 0.3, max: 1.0 },
             particleDensity: 0.8,
             soundEnabled: true,
-            3dEffects: true,
+            dEffects: true,
             interactiveMode: true
         };
         
@@ -894,103 +894,6 @@ class AdvancedRoseGenerator {
         `;
 
         return aura;
-    }
-
-    async createDecorativeAdvancedRose(containerWidth, containerHeight, index) {
-        // 创建装饰性玫瑰花，随机分布在容器中
-        const x = Math.random() * containerWidth;
-        const y = Math.random() * containerHeight;
-        const z = Math.random() * 100 - 50;
-        const intensity = 0.3 + Math.random() * 0.4; // 装饰性玫瑰花强度较低
-        const rotation = Math.random() * 360;
-
-        const rose = await this.createAdvancedRose(x, y, z, index, intensity, rotation);
-        rose.classList.add('decorative-rose');
-        rose.style.opacity = '0.7'; // 装饰性玫瑰花稍微透明
-
-        return rose;
-    }
-
-    applyGoldenRoseEffect(rose) {
-        // 金色玫瑰花特效
-        rose.style.filter += ' hue-rotate(45deg) brightness(1.3) saturate(1.5)';
-        rose.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.8)';
-
-        // 添加金色光环
-        const goldenAura = document.createElement('div');
-        goldenAura.className = 'golden-aura';
-        goldenAura.style.cssText = `
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 40px;
-            height: 40px;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: goldenAuraGlow 2s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        `;
-        rose.appendChild(goldenAura);
-    }
-
-    applyDiamondRoseEffect(rose) {
-        // 钻石玫瑰花特效
-        rose.style.filter += ' brightness(1.5) contrast(1.3) saturate(0.8)';
-        rose.style.boxShadow = '0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(200, 200, 255, 0.6)';
-
-        // 添加钻石光芒
-        const diamondAura = document.createElement('div');
-        diamondAura.className = 'diamond-aura';
-        diamondAura.style.cssText = `
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 50px;
-            height: 50px;
-            transform: translate(-50%, -50%);
-            background: conic-gradient(from 0deg,
-                rgba(255, 255, 255, 0.8) 0deg,
-                rgba(200, 200, 255, 0.6) 60deg,
-                rgba(255, 255, 255, 0.8) 120deg,
-                rgba(200, 200, 255, 0.6) 180deg,
-                rgba(255, 255, 255, 0.8) 240deg,
-                rgba(200, 200, 255, 0.6) 300deg,
-                rgba(255, 255, 255, 0.8) 360deg);
-            border-radius: 50%;
-            animation: diamondAuraRotate 3s linear infinite;
-            pointer-events: none;
-            z-index: -1;
-        `;
-        rose.appendChild(diamondAura);
-    }
-
-    createRoseBloomEffect(rose) {
-        // 玫瑰花绽放特效
-        const bloomEffect = document.createElement('div');
-        bloomEffect.className = 'bloom-effect';
-        bloomEffect.style.cssText = `
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.8) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: bloomExpand 1s ease-out forwards;
-            pointer-events: none;
-            z-index: 1;
-        `;
-
-        rose.appendChild(bloomEffect);
-
-        setTimeout(() => {
-            if (bloomEffect.parentNode) {
-                bloomEffect.parentNode.removeChild(bloomEffect);
-            }
-        }, 1000);
     }
 
     addAdvancedRoseInteractions(rose, index, intensity) {
